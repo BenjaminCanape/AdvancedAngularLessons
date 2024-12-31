@@ -1,0 +1,26 @@
+<h2 mat-dialog-title id="confirmation-dialog-title">
+  {{ 'notes.deletion_confirmation_title' | translate }}
+</h2>
+<mat-dialog-content [attr.aria-labelledby]="'confirmation-dialog-title'">
+  {{ 'notes.deletion_confirmation' | translate }}</mat-dialog-content
+>
+<mat-dialog-actions>
+  <button
+    mat-button
+    mat-dialog-close="false"
+    [attr.aria-label]="'global.no' | translate"
+    (keydown.space)="dismiss()"
+    (keydown.enter)="dismiss()">
+    {{ 'global.no' | translate }}
+  </button>
+  <button
+    mat-button
+    mat-dialog-close="true"
+    cdkFocusInitial
+    [attr.aria-label]="'global.yes' | translate"
+    (click)="validate()"
+    (keydown.space)="validate()"
+    (keydown.enter)="validate()">
+    {{ 'global.yes' | translate }}
+  </button>
+</mat-dialog-actions>

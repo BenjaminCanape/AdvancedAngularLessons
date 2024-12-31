@@ -1,0 +1,21 @@
+<div
+  class="note"
+  role="button"
+  tabindex="0"
+  (click)="openNote(note.id, $event)"
+  (keydown.enter)="openNote(note.id, $event)"
+  (keydown.space)="openNote(note.id, $event)">
+  <div class="note-title">
+    <h3>{{ note.title }}</h3>
+    <button
+      class="remove-btn"
+      [attr.aria-label]="'notes.delete_note' | translate"
+      (click)="confirmDeleteNote(note.id, $event)"
+      (keydown.space)="confirmDeleteNote(note.id, $event)"
+      (keydown.enter)="confirmDeleteNote(note.id, $event)">
+      <mat-icon aria-hidden="true">delete</mat-icon>
+    </button>
+  </div>
+
+  <p>{{ note.content }}</p>
+</div>

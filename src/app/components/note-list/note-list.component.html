@@ -1,0 +1,16 @@
+@if (selected$ | async; as selected) {
+  <app-note-edit [note]="selected"></app-note-edit>
+} @else {
+  @if (notes$ | async; as notes) {
+    <div class="notes-container">
+      @for (note of notes; track note.id) {
+        <app-note [note]="note"></app-note>
+      }
+      @if (!notes.length) {
+        <span class="no-notes">{{ 'notes.not_found' | translate }}</span>
+      }
+    </div>
+  } @else {
+    <mat-spinner></mat-spinner>
+  }
+}

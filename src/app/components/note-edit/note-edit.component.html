@@ -1,0 +1,39 @@
+<div
+  class="overlay"
+  (click)="unselectNote(note.id)"
+  (keydown.enter)="unselectNote(note.id)"
+  aria-disabled="true"></div>
+@if (noteForm) {
+  <form [formGroup]="noteForm">
+    <div class="note expanded">
+      <div class="note-title">
+        <mat-form-field>
+          <mat-label for="noteTitle">{{
+            'notes.form.title_placeholder' | translate
+          }}</mat-label>
+          <input
+            id="noteTitle"
+            matInput
+            formControlName="title"
+            aria-labelledby="noteTitle" />
+        </mat-form-field>
+        <button
+          class="close-btn"
+          (click)="unselectNote(note.id)"
+          [attr.aria-label]="'actions.close' | translate">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label for="noteContent">{{
+          'notes.form.content_placeholder' | translate
+        }}</mat-label>
+        <textarea
+          id="noteContent"
+          matInput
+          formControlName="content"
+          aria-labelledby="noteContent"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+}

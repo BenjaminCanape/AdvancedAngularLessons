@@ -1,0 +1,17 @@
+<div class="action-bar">
+  <mat-toolbar>
+    <button
+      mat-fab
+      extended
+      color="primary"
+      (click)="openAddNoteForm()"
+      [attr.aria-label]="'actions.add' | translate">
+      <mat-icon aria-hidden="true">add</mat-icon>
+      <span>{{ 'actions.add' | translate }}</span>
+    </button>
+  </mat-toolbar>
+</div>
+
+<div class="content">
+  <app-note-list></app-note-list>
+</div>

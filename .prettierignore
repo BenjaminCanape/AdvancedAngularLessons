@@ -1,0 +1,40 @@
+# Compiled output
+dist/
+out-tsc/
+build/
+
+# IDE and editor files
+.vscode/
+
+# Node modules
+node_modules/
+
+# System files
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Optional npm cache directory
+.npm/
+
+# Temp files
+tmp/
+temp/
+
+# Angular specific
+.angular/
+.angular/cache/
+
+# Test files
+coverage/
+
+# Environment files
+src/environments/*.ts
+!src/environments/environment.prod.ts
+
+# Angular CLI generated output
+package-lock.json

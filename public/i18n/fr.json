@@ -1,0 +1,26 @@
+{
+    "actions": {
+        "add": "Ajouter",
+        "close": "Fermer"
+    },
+    "errors": {
+        "occurred": "Une erreur est survenue"
+    },
+    "global":{
+        "no": "Non",
+        "yes": "Oui"
+    },
+    "notes": {
+        "add_success": "Note ajoutée avec succès",
+        "delete_note": "Supprimer la note",
+        "deletion_confirmation": "Voulez vous supprimer cette note ?",
+        "deletion_confirmation_title": "Confirmer la suppression",
+        "deletion_success": "Note supprimée avec succès",
+        "form": {
+            "content_placeholder": "Contenu",
+            "title_placeholder": "Titre"
+        },
+        "not_found": "Pas de note trouvée",
+        "update_success": "Note mise à jour avec succès"
+    }
+}
