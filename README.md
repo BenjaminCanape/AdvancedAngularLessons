@@ -4,7 +4,7 @@ As a Front-end Lead Developer, I want to share my knowledge about some technolog
 
 ## 1. Learn to master NgRx
 First of all, before trying to do these exercises, you need to read and learn about NgRx, what it is, when to use it and how to implement it
-<a href="https://buymeacoffee.com/benjamincanape" target="_blank">Click here to learn first</a>
+<a href="https://medium.com/@benjamin.canape/ngrx-mastering-state-management-in-angular-a4ebe80d5426" target="_blank">Click here to learn first</a>
 
 Then the goal of the exercises I will propose to you here will be to modify an notebook app using a service to store the list of notes created to create a store with NgRx and make this list available even when the navigator is refreshed.  
 
