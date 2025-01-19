@@ -1,25 +1,39 @@
-import { Injectable } from '@angular/core';
-import { Note, NoteData } from '../store/note/note.model';
-import { Observable, of } from 'rxjs';
+import { Injectable, signal, WritableSignal } from '@angular/core';
+import { Note, NoteData } from '../model/note.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NoteService {
-  add(note: NoteData): Observable<Note> {
+  noteList: WritableSignal<Note[]> = signal([]);
+  selectedId: WritableSignal<string | undefined> = signal(undefined);
+  selected: WritableSignal<Note | undefined> = signal(undefined);
+
+  select(selectedId?: string) {
+    this.selectedId.set(selectedId);
+    const selectedNote = this.noteList().find(note => note.id === selectedId);
+    this.selected.set(selectedNote);
+  }
+
+  add(note: NoteData) {
     console.log('Here you will call the api to add the note:', note);
     const id = crypto.randomUUID().toString();
     const creationDate = new Date();
-    return of({ id, creationDate, ...note });
+
+    const noteObject = { id, creationDate, ...note };
+    this.noteList.update(noteList => [noteObject, ...noteList]);
+    this.select(id);
   }
 
   update(id: string, note: Note) {
     console.log('Here you will call the api to update the note:', note);
-    return of(note);
+    this.noteList.update(notes =>
+      notes.map(n => (n.id === id ? { ...n, ...note } : n))
+    );
   }
 
   delete(id: string) {
     console.log('Here you will call the api to delete the note:', id);
-    return of(true);
+    this.noteList.update(notes => notes.filter(note => note.id !== id));
   }
 }

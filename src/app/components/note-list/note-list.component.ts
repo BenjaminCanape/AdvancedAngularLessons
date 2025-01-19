@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
 
 import { CommonModule } from '@angular/common';
-import { NoteFacade } from '../../store/note/note.facade';
 import { NoteComponent } from '../note/note.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NoteEditComponent } from '../note-edit/note-edit.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { NoteService } from '../../services/note.service';
 
 @Component({
   selector: 'app-note-list',
@@ -17,13 +16,12 @@ import { TranslatePipe } from '@ngx-translate/core';
     MatProgressSpinnerModule,
     NoteComponent,
     NoteEditComponent,
-    StoreModule,
     TranslatePipe,
   ],
 })
 export class NoteListComponent {
-  readonly noteFacade = inject(NoteFacade);
+  readonly noteService = inject(NoteService);
 
-  notes$ = this.noteFacade.notes$;
-  selected$ = this.noteFacade.selected$;
+  notes = this.noteService.noteList;
+  selected = this.noteService.selected;
 }

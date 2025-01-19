@@ -1,7 +1,7 @@
-@if (selected$ | async; as selected) {
+@if (selected(); as selected) {
   <app-note-edit [note]="selected"></app-note-edit>
 } @else {
-  @if (notes$ | async; as notes) {
+  @if (notes(); as notes) {
     <div class="notes-container">
       @for (note of notes; track note.id) {
         <app-note [note]="note"></app-note>

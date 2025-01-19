@@ -5,13 +5,13 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { NoteFacade } from '../../store/note/note.facade';
-import { Note } from '../../store/note/note.model';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { Note } from '../../model/note.model';
+import { NoteService } from '../../services/note.service';
 
 @Component({
   selector: 'app-note-edit',
@@ -29,7 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class NoteEditComponent implements OnInit {
   readonly fb = inject(FormBuilder);
-  readonly noteFacade = inject(NoteFacade);
+  readonly noteService = inject(NoteService);
 
   @Input() note: Note;
 
@@ -46,12 +46,12 @@ export class NoteEditComponent implements OnInit {
     if (this.noteForm.dirty) {
       this.saveNote(noteId);
     }
-    this.noteFacade.select(undefined);
+    this.noteService.select(undefined);
   }
 
   private saveNote(id: string): void {
     const { title, content } = this.noteForm.value;
     const creationDate = this.note.creationDate;
-    this.noteFacade.update(id, { id, creationDate, title, content });
+    this.noteService.update(id, { id, creationDate, title, content });
   }
 }

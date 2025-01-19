@@ -5,13 +5,13 @@ import {
   Input,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { Note } from '../../store/note/note.model';
-import { NoteFacade } from '../../store/note/note.facade';
 import { CommonModule } from '@angular/common';
 import { filter, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Note } from '../../model/note.model';
+import { NoteService } from '../../services/note.service';
 
 @Component({
   selector: 'app-note',
@@ -22,7 +22,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class NoteComponent {
   readonly dialog = inject(MatDialog);
-  readonly noteFacade = inject(NoteFacade);
+  readonly noteService = inject(NoteService);
 
   @Input() note: Note;
 
@@ -32,7 +32,7 @@ export class NoteComponent {
     if (event?.target && (event.target as HTMLElement).closest('.remove-btn')) {
       return;
     }
-    this.noteFacade.select(noteId);
+    this.noteService.select(noteId);
   }
 
   confirmDeleteNote(noteId: string, event: Event): void {
@@ -43,7 +43,7 @@ export class NoteComponent {
       .afterClosed()
       .pipe(
         filter(value => value === true),
-        tap(() => this.noteFacade.delete(noteId))
+        tap(() => this.noteService.delete(noteId))
       )
       .subscribe();
   }

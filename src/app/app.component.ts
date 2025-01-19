@@ -6,9 +6,9 @@ import { NoteListComponent } from './components/note-list/note-list.component';
 import { MatFabButton } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
-import { NoteFacade } from './store/note/note.facade';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { NoteService } from './services/note.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +25,7 @@ import { TranslateService, TranslatePipe } from '@ngx-translate/core';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  readonly noteFacade = inject(NoteFacade);
+  readonly noteService = inject(NoteService);
   readonly translateService = inject(TranslateService);
 
   constructor() {
@@ -35,6 +35,6 @@ export class AppComponent {
   }
 
   openAddNoteForm = () => {
-    this.noteFacade.add({ title: '', content: '' });
+    this.noteService.add({ title: '', content: '' });
   };
 }
